@@ -144,7 +144,9 @@ body {
   position: absolute;
   inset: 0;
   display: grid;
-  place-items: center;
+  align-items: start;
+  justify-items: center;
+  padding: 12px;
   background: rgba(247, 242, 234, 0.85);
   z-index: 2;
   border-radius: 20px;
@@ -160,6 +162,7 @@ body {
   text-align: center;
   display: grid;
   gap: 12px;
+  margin-top: 4px;
 }
 
 .action-block {
