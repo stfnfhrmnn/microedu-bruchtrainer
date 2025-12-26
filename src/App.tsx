@@ -11,7 +11,7 @@ import { formatFraction } from "./engine/fractions";
 import { evaluateAnswer } from "./logic/evaluate";
 import { generateTask } from "./logic/generators";
 import { glossary, strings, type Language, getLanguageLabel, languageOrder } from "./logic/i18n";
-import type { Attempt, ModuleStatus, TaskInstance } from "./logic/models";
+import type { Attempt, ModuleStatus, TaskInstance, TaskTemplate } from "./logic/models";
 import { modules, subskillById, subskills } from "./logic/modules";
 import { evaluateModuleStatus, isSubskillMastered } from "./logic/progress";
 import { buildSubskillStats, pickTrainingSubskill } from "./logic/selection";
@@ -81,7 +81,7 @@ const App: React.FC = () => {
     taskRegistry.current.set(task.id, task);
   };
 
-  const lookupTask = (taskId: string): TaskInstance | undefined => {
+  const lookupTask = (taskId: string): TaskTemplate | undefined => {
     return taskRegistry.current.get(taskId) ?? taskLookupById(taskId);
   };
 
@@ -714,7 +714,7 @@ const App: React.FC = () => {
             <h2>{t.sessionDone}</h2>
             <p>{t.sessionSummary(trainingCorrect, 10)}</p>
             <div className="button-row">
-              <button type="button" onClick={startTraining}>
+              <button type="button" onClick={() => startTraining()}>
                 {t.anotherRound}
               </button>
               <button type="button" className="secondary" onClick={goToDashboard}>

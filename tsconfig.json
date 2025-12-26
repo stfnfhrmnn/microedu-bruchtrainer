@@ -10,7 +10,7 @@
     "noEmit": true,
     "allowJs": false,
     "resolveJsonModule": true,
-    "types": ["vite/client", "vitest/globals"]
+    "types": ["vite/client", "vitest/globals", "node"]
   },
   "include": ["src", "scripts", "tests"]
 }
