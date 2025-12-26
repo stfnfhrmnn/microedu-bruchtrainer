@@ -1,0 +1,1514 @@
+[
+  {
+    "id": "T_VIS_004",
+    "moduleId": "M_VISUAL",
+    "subskillId": "S_VIS_02",
+    "type": "visual",
+    "prompt": "Schattiere: 1/4",
+    "promptEn": "Shade: 1/4",
+    "promptEs": "Sombrea: 1/4",
+    "promptFr": "Colorie : 1/4",
+    "answer": {
+      "num": 1,
+      "den": 4
+    },
+    "steps": [
+      "Wähle 1 von 4 Sektoren aus.",
+      "Bruch: 1/4"
+    ],
+    "stepsEn": [
+      "Select 1 of 4 sectors.",
+      "Fraction: 1/4"
+    ],
+    "stepsEs": [
+      "Selecciona 1 de 4 sectores.",
+      "Fracción: 1/4"
+    ],
+    "stepsFr": [
+      "Sélectionne 1 secteur sur 4.",
+      "Fraction : 1/4"
+    ],
+    "expr": {
+      "op": "visual",
+      "shaded": 1,
+      "total": 4
+    },
+    "visual": {
+      "type": "circle",
+      "sectors": 4,
+      "mode": "shade",
+      "target": 1
+    }
+  },
+  {
+    "id": "T_VIS_005",
+    "moduleId": "M_VISUAL",
+    "subskillId": "S_VIS_01",
+    "type": "visual",
+    "prompt": "Wie viel ist schattiert?",
+    "promptEn": "How much is shaded?",
+    "promptEs": "¿Cuánto está sombreado?",
+    "promptFr": "Quelle part est colorée ?",
+    "answer": {
+      "num": 1,
+      "den": 3
+    },
+    "steps": [
+      "12 Felder, 4 sind schattiert.",
+      "Bruch: 4/12 = 1/3"
+    ],
+    "stepsEn": [
+      "12 cells, 4 are shaded.",
+      "Fraction: 4/12 = 1/3"
+    ],
+    "stepsEs": [
+      "12 celdas, 4 están sombreadas.",
+      "Fracción: 4/12 = 1/3"
+    ],
+    "stepsFr": [
+      "12 cases, 4 sont colorées.",
+      "Fraction : 4/12 = 1/3"
+    ],
+    "expr": {
+      "op": "visual",
+      "shaded": 4,
+      "total": 12
+    },
+    "visual": {
+      "type": "grid",
+      "rows": 3,
+      "cols": 4,
+      "shaded": 4,
+      "mode": "read"
+    }
+  },
+  {
+    "id": "T_VIS_006",
+    "moduleId": "M_VISUAL",
+    "subskillId": "S_VIS_02",
+    "type": "visual",
+    "prompt": "Wie viel ist schattiert?",
+    "promptEn": "How much is shaded?",
+    "promptEs": "¿Cuánto está sombreado?",
+    "promptFr": "Quelle part est colorée ?",
+    "answer": {
+      "num": 1,
+      "den": 3
+    },
+    "steps": [
+      "6 Sektoren, 2 sind schattiert.",
+      "Bruch: 2/6 = 1/3"
+    ],
+    "stepsEn": [
+      "6 sectors, 2 are shaded.",
+      "Fraction: 2/6 = 1/3"
+    ],
+    "stepsEs": [
+      "6 sectores, 2 están sombreados.",
+      "Fracción: 2/6 = 1/3"
+    ],
+    "stepsFr": [
+      "6 secteurs, 2 sont colorés.",
+      "Fraction : 2/6 = 1/3"
+    ],
+    "expr": {
+      "op": "visual",
+      "shaded": 2,
+      "total": 6
+    },
+    "visual": {
+      "type": "circle",
+      "sectors": 6,
+      "shaded": 2,
+      "mode": "read"
+    }
+  },
+  {
+    "id": "T_VIS_007",
+    "moduleId": "M_VISUAL",
+    "subskillId": "S_VIS_01",
+    "type": "visual",
+    "prompt": "Schattiere: 2/5",
+    "promptEn": "Shade: 2/5",
+    "promptEs": "Sombrea: 2/5",
+    "promptFr": "Colorie : 2/5",
+    "answer": {
+      "num": 2,
+      "den": 5
+    },
+    "steps": [
+      "Wähle 2 von 5 Feldern aus.",
+      "Bruch: 2/5"
+    ],
+    "stepsEn": [
+      "Select 2 of 5 cells.",
+      "Fraction: 2/5"
+    ],
+    "stepsEs": [
+      "Selecciona 2 de 5 celdas.",
+      "Fracción: 2/5"
+    ],
+    "stepsFr": [
+      "Sélectionne 2 cases sur 5.",
+      "Fraction : 2/5"
+    ],
+    "expr": {
+      "op": "visual",
+      "shaded": 2,
+      "total": 5
+    },
+    "visual": {
+      "type": "grid",
+      "rows": 1,
+      "cols": 5,
+      "mode": "shade",
+      "target": 2
+    }
+  },
+  {
+    "id": "T_MUL_001",
+    "moduleId": "M_MUL",
+    "subskillId": "S_MUL_01",
+    "type": "free",
+    "prompt": "Berechne: 2/3 * 3/5",
+    "answer": {
+      "num": 2,
+      "den": 5
+    },
+    "steps": [
+      "Zähler mal Zähler: 2*3=6",
+      "Nenner mal Nenner: 3*5=15",
+      "Kürzen: 6/15 = 2/5"
+    ],
+    "solutions": [
+      {
+        "title": "Lösung A (direkt)",
+        "steps": [
+          "Zähler mal Zähler: 2*3=6",
+          "Nenner mal Nenner: 3*5=15",
+          "Kürzen: 6/15 = 2/5"
+        ]
+      },
+      {
+        "title": "Lösung B (vorher kürzen)",
+        "steps": [
+          "Über Kreuz kürzen: 3 mit 3 -> 1 und 1",
+          "Multiplizieren: (2*1)/(5*1)=2/5"
+        ]
+      }
+    ],
+    "tags": [
+      "multiply",
+      "simplify"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "2/3",
+      "b": "3/5"
+    },
+    "promptEn": "Calculate: 2/3 * 3/5",
+    "stepsEn": [
+      "Numerator times numerator: 2*3=6",
+      "Denominator times denominator: 3*5=15",
+      "Simplify: 6/15 = 2/5"
+    ],
+    "solutionsEn": [
+      {
+        "title": "Solution A (direct)",
+        "steps": [
+          "Numerator times numerator: 2*3=6",
+          "Denominator times denominator: 3*5=15",
+          "Simplify: 6/15 = 2/5"
+        ]
+      },
+      {
+        "title": "Solution B (cancel first)",
+        "steps": [
+          "Cross-cancel: 3 with 3 -> 1 and 1",
+          "Multiply: (2*1)/(5*1)=2/5"
+        ]
+      }
+    ],
+    "promptEs": "Calcula: 2/3 * 3/5",
+    "promptFr": "Calcule : 2/3 * 3/5",
+    "stepsEs": [
+      "Numerador por numerador: 2*3=6",
+      "Denominador por denominador: 3*5=15",
+      "Simplifica: 6/15 = 2/5"
+    ],
+    "stepsFr": [
+      "Numérateur par numérateur : 2*3=6",
+      "Dénominateur par dénominateur : 3*5=15",
+      "Simplifie : 6/15 = 2/5"
+    ],
+    "solutionsEs": [
+      {
+        "title": "Solución A (directa)",
+        "steps": [
+          "Numerador por numerador: 2*3=6",
+          "Denominador por denominador: 3*5=15",
+          "Simplifica: 6/15 = 2/5"
+        ]
+      },
+      {
+        "title": "Solución B (simplificar antes)",
+        "steps": [
+          "Simplifica en cruz: 3 con 3 -> 1 y 1",
+          "Multiplica: (2*1)/(5*1)=2/5"
+        ]
+      }
+    ],
+    "solutionsFr": [
+      {
+        "title": "Solution A (directe)",
+        "steps": [
+          "Numérateur par numérateur : 2*3=6",
+          "Dénominateur par dénominateur : 3*5=15",
+          "Simplifie : 6/15 = 2/5"
+        ]
+      },
+      {
+        "title": "Solution B (réduire d'abord)",
+        "steps": [
+          "Réduction en croix : 3 avec 3 -> 1 et 1",
+          "Multiplie : (2*1)/(5*1)=2/5"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T_MUL_002",
+    "moduleId": "M_MUL",
+    "subskillId": "S_MUL_03",
+    "type": "free",
+    "prompt": "Berechne mit Kürzen: 6/7 * 14/15",
+    "answer": {
+      "num": 4,
+      "den": 5
+    },
+    "steps": [
+      "Über Kreuz kürzen: 6 mit 15 durch 3 -> 2 und 5",
+      "Über Kreuz kürzen: 14 mit 7 -> 2 und 1",
+      "Multiplizieren: (2*2)/(1*5)=4/5"
+    ],
+    "solutions": [
+      {
+        "title": "Lösung A (über Kreuz)",
+        "steps": [
+          "Über Kreuz kürzen: 6 mit 15 durch 3 -> 2 und 5",
+          "Über Kreuz kürzen: 14 mit 7 -> 2 und 1",
+          "Multiplizieren: (2*2)/(1*5)=4/5"
+        ]
+      },
+      {
+        "title": "Lösung B (erst multiplizieren)",
+        "steps": [
+          "Multiplizieren: 6/7 * 14/15 = 84/105",
+          "Kürzen: 84/105 = 4/5"
+        ]
+      }
+    ],
+    "tags": [
+      "multiply",
+      "cross-simplify"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "6/7",
+      "b": "14/15"
+    },
+    "promptEn": "Calculate with simplifying: 6/7 * 14/15",
+    "stepsEn": [
+      "Cross-cancel: 6 with 15 by 3 -> 2 and 5",
+      "Cross-cancel: 14 with 7 -> 2 and 1",
+      "Multiply: (2*2)/(1*5)=4/5"
+    ],
+    "solutionsEn": [
+      {
+        "title": "Solution A (cross-cancel)",
+        "steps": [
+          "Cross-cancel: 6 with 15 by 3 -> 2 and 5",
+          "Cross-cancel: 14 with 7 -> 2 and 1",
+          "Multiply: (2*2)/(1*5)=4/5"
+        ]
+      },
+      {
+        "title": "Solution B (multiply first)",
+        "steps": [
+          "Multiply: 6/7 * 14/15 = 84/105",
+          "Simplify: 84/105 = 4/5"
+        ]
+      }
+    ],
+    "promptEs": "Calcula con simplificación: 6/7 * 14/15",
+    "promptFr": "Calcule avec simplification : 6/7 * 14/15",
+    "stepsEs": [
+      "Simplifica en cruz: 6 con 15 por 3 -> 2 y 5",
+      "Simplifica en cruz: 14 con 7 -> 2 y 1",
+      "Multiplica: (2*2)/(1*5)=4/5"
+    ],
+    "stepsFr": [
+      "Réduction en croix : 6 avec 15 par 3 -> 2 et 5",
+      "Réduction en croix : 14 avec 7 -> 2 et 1",
+      "Multiplie : (2*2)/(1*5)=4/5"
+    ],
+    "solutionsEs": [
+      {
+        "title": "Solución A (en cruz)",
+        "steps": [
+          "Simplifica en cruz: 6 con 15 por 3 -> 2 y 5",
+          "Simplifica en cruz: 14 con 7 -> 2 y 1",
+          "Multiplica: (2*2)/(1*5)=4/5"
+        ]
+      },
+      {
+        "title": "Solución B (multiplicar primero)",
+        "steps": [
+          "Multiplica: 6/7 * 14/15 = 84/105",
+          "Simplifica: 84/105 = 4/5"
+        ]
+      }
+    ],
+    "solutionsFr": [
+      {
+        "title": "Solution A (en croix)",
+        "steps": [
+          "Réduction en croix : 6 avec 15 par 3 -> 2 et 5",
+          "Réduction en croix : 14 avec 7 -> 2 et 1",
+          "Multiplie : (2*2)/(1*5)=4/5"
+        ]
+      },
+      {
+        "title": "Solution B (multiplier d'abord)",
+        "steps": [
+          "Multiplie : 6/7 * 14/15 = 84/105",
+          "Simplifie : 84/105 = 4/5"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T_MUL_003",
+    "moduleId": "M_MUL",
+    "subskillId": "S_MUL_02",
+    "type": "mc",
+    "prompt": "Berechne: 3/8 * 4/9",
+    "answer": {
+      "num": 1,
+      "den": 6
+    },
+    "distractors": [
+      {
+        "num": 1,
+        "den": 12
+      },
+      {
+        "num": 3,
+        "den": 8
+      },
+      {
+        "num": 2,
+        "den": 9
+      }
+    ],
+    "steps": [
+      "Multiplizieren: 12/72",
+      "Kürzen: 12/72 = 1/6"
+    ],
+    "solutions": [
+      {
+        "title": "Lösung A",
+        "steps": [
+          "Multiplizieren: 12/72",
+          "Kürzen: 12/72 = 1/6"
+        ]
+      },
+      {
+        "title": "Lösung B (vorher kürzen)",
+        "steps": [
+          "Über Kreuz kürzen: 3 mit 9 -> 1 und 3",
+          "Über Kreuz kürzen: 4 mit 8 -> 1 und 2",
+          "Multiplizieren: (1*1)/(2*3)=1/6"
+        ]
+      }
+    ],
+    "tags": [
+      "multiply",
+      "simplify"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "3/8",
+      "b": "4/9"
+    },
+    "promptEn": "Calculate: 3/8 * 4/9",
+    "stepsEn": [
+      "Multiply: 12/72",
+      "Simplify: 12/72 = 1/6"
+    ],
+    "solutionsEn": [
+      {
+        "title": "Solution A",
+        "steps": [
+          "Multiply: 12/72",
+          "Simplify: 12/72 = 1/6"
+        ]
+      },
+      {
+        "title": "Solution B (cancel first)",
+        "steps": [
+          "Cross-cancel: 3 with 9 -> 1 and 3",
+          "Cross-cancel: 4 with 8 -> 1 and 2",
+          "Multiply: (1*1)/(2*3)=1/6"
+        ]
+      }
+    ],
+    "promptEs": "Calcula: 3/8 * 4/9",
+    "promptFr": "Calcule : 3/8 * 4/9",
+    "stepsEs": [
+      "Multiplica: 12/72",
+      "Simplifica: 12/72 = 1/6"
+    ],
+    "stepsFr": [
+      "Multiplie : 12/72",
+      "Simplifie : 12/72 = 1/6"
+    ],
+    "solutionsEs": [
+      {
+        "title": "Solución A",
+        "steps": [
+          "Multiplica: 12/72",
+          "Simplifica: 12/72 = 1/6"
+        ]
+      },
+      {
+        "title": "Solución B (simplificar antes)",
+        "steps": [
+          "Simplifica en cruz: 3 con 9 -> 1 y 3",
+          "Simplifica en cruz: 4 con 8 -> 1 y 2",
+          "Multiplica: (1*1)/(2*3)=1/6"
+        ]
+      }
+    ],
+    "solutionsFr": [
+      {
+        "title": "Solution A",
+        "steps": [
+          "Multiplie : 12/72",
+          "Simplifie : 12/72 = 1/6"
+        ]
+      },
+      {
+        "title": "Solution B (réduire d'abord)",
+        "steps": [
+          "Réduction en croix : 3 avec 9 -> 1 et 3",
+          "Réduction en croix : 4 avec 8 -> 1 et 2",
+          "Multiplie : (1*1)/(2*3)=1/6"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T_DIV_001",
+    "moduleId": "M_DIV",
+    "subskillId": "S_DIV_01",
+    "type": "free",
+    "prompt": "Berechne: 3/4 : 2/5",
+    "answer": {
+      "num": 15,
+      "den": 8
+    },
+    "steps": [
+      "Kehrwert nehmen: 2/5 -> 5/2",
+      "Multiplizieren: 3/4 * 5/2 = 15/8"
+    ],
+    "solutions": [
+      {
+        "title": "Lösung A",
+        "steps": [
+          "Kehrwert nehmen: 2/5 -> 5/2",
+          "Multiplizieren: 3/4 * 5/2 = 15/8"
+        ]
+      },
+      {
+        "title": "Lösung B (Direktformel)",
+        "steps": [
+          "Formel: (a/b) : (c/d) = (a*d)/(b*c)",
+          "3/4 : 2/5 = (3*5)/(4*2) = 15/8"
+        ]
+      }
+    ],
+    "tags": [
+      "divide",
+      "invert"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "3/4",
+      "b": "2/5"
+    },
+    "promptEn": "Calculate: 3/4 ÷ 2/5",
+    "stepsEn": [
+      "Take the reciprocal: 2/5 -> 5/2",
+      "Multiply: 3/4 * 5/2 = 15/8"
+    ],
+    "solutionsEn": [
+      {
+        "title": "Solution A",
+        "steps": [
+          "Take the reciprocal: 2/5 -> 5/2",
+          "Multiply: 3/4 * 5/2 = 15/8"
+        ]
+      },
+      {
+        "title": "Solution B (formula)",
+        "steps": [
+          "Formula: (a/b) ÷ (c/d) = (a*d)/(b*c)",
+          "3/4 ÷ 2/5 = (3*5)/(4*2) = 15/8"
+        ]
+      }
+    ],
+    "promptEs": "Calcula: 3/4 ÷ 2/5",
+    "promptFr": "Calcule : 3/4 ÷ 2/5",
+    "stepsEs": [
+      "Recíproco: 2/5 -> 5/2",
+      "Multiplica: 3/4 * 5/2 = 15/8"
+    ],
+    "stepsFr": [
+      "Inverse : 2/5 -> 5/2",
+      "Multiplie : 3/4 * 5/2 = 15/8"
+    ],
+    "solutionsEs": [
+      {
+        "title": "Solución A",
+        "steps": [
+          "Recíproco: 2/5 -> 5/2",
+          "Multiplica: 3/4 * 5/2 = 15/8"
+        ]
+      },
+      {
+        "title": "Solución B (fórmula)",
+        "steps": [
+          "Fórmula: (a/b) ÷ (c/d) = (a*d)/(b*c)",
+          "3/4 ÷ 2/5 = (3*5)/(4*2) = 15/8"
+        ]
+      }
+    ],
+    "solutionsFr": [
+      {
+        "title": "Solution A",
+        "steps": [
+          "Inverse : 2/5 -> 5/2",
+          "Multiplie : 3/4 * 5/2 = 15/8"
+        ]
+      },
+      {
+        "title": "Solution B (formule)",
+        "steps": [
+          "Formule : (a/b) ÷ (c/d) = (a*d)/(b*c)",
+          "3/4 ÷ 2/5 = (3*5)/(4*2) = 15/8"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T_DIV_002",
+    "moduleId": "M_DIV",
+    "subskillId": "S_DIV_02",
+    "type": "free",
+    "prompt": "Berechne mit Kürzen: 8/9 : 4/15",
+    "answer": {
+      "num": 10,
+      "den": 3
+    },
+    "steps": [
+      "Kehrwert: 4/15 -> 15/4",
+      "Über Kreuz kürzen: 8 mit 4 -> 2 und 1",
+      "Über Kreuz kürzen: 15 mit 9 -> 5 und 3",
+      "Multiplizieren: (2*5)/(3*1)=10/3"
+    ],
+    "solutions": [
+      {
+        "title": "Lösung A (über Kreuz)",
+        "steps": [
+          "Kehrwert: 4/15 -> 15/4",
+          "Über Kreuz kürzen: 8 mit 4 -> 2 und 1",
+          "Über Kreuz kürzen: 15 mit 9 -> 5 und 3",
+          "Multiplizieren: (2*5)/(3*1)=10/3"
+        ]
+      },
+      {
+        "title": "Lösung B (erst multiplizieren)",
+        "steps": [
+          "Kehrwert: 4/15 -> 15/4",
+          "Multiplizieren: 8/9 * 15/4 = 120/36",
+          "Kürzen: 120/36 = 10/3"
+        ]
+      }
+    ],
+    "tags": [
+      "divide",
+      "invert",
+      "cross-simplify"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "8/9",
+      "b": "4/15"
+    },
+    "promptEn": "Calculate with simplifying: 8/9 ÷ 4/15",
+    "stepsEn": [
+      "Reciprocal: 4/15 -> 15/4",
+      "Cross-cancel: 8 with 4 -> 2 and 1",
+      "Cross-cancel: 15 with 9 -> 5 and 3",
+      "Multiply: (2*5)/(3*1)=10/3"
+    ],
+    "solutionsEn": [
+      {
+        "title": "Solution A (cross-cancel)",
+        "steps": [
+          "Reciprocal: 4/15 -> 15/4",
+          "Cross-cancel: 8 with 4 -> 2 and 1",
+          "Cross-cancel: 15 with 9 -> 5 and 3",
+          "Multiply: (2*5)/(3*1)=10/3"
+        ]
+      },
+      {
+        "title": "Solution B (multiply first)",
+        "steps": [
+          "Reciprocal: 4/15 -> 15/4",
+          "Multiply: 8/9 * 15/4 = 120/36",
+          "Simplify: 120/36 = 10/3"
+        ]
+      }
+    ],
+    "promptEs": "Calcula con simplificación: 8/9 ÷ 4/15",
+    "promptFr": "Calcule avec simplification : 8/9 ÷ 4/15",
+    "stepsEs": [
+      "Recíproco: 4/15 -> 15/4",
+      "Simplifica en cruz: 8 con 4 -> 2 y 1",
+      "Simplifica en cruz: 15 con 9 -> 5 y 3",
+      "Multiplica: (2*5)/(3*1)=10/3"
+    ],
+    "stepsFr": [
+      "Inverse : 4/15 -> 15/4",
+      "Réduction en croix : 8 avec 4 -> 2 et 1",
+      "Réduction en croix : 15 avec 9 -> 5 et 3",
+      "Multiplie : (2*5)/(3*1)=10/3"
+    ],
+    "solutionsEs": [
+      {
+        "title": "Solución A (en cruz)",
+        "steps": [
+          "Recíproco: 4/15 -> 15/4",
+          "Simplifica en cruz: 8 con 4 -> 2 y 1",
+          "Simplifica en cruz: 15 con 9 -> 5 y 3",
+          "Multiplica: (2*5)/(3*1)=10/3"
+        ]
+      },
+      {
+        "title": "Solución B (multiplicar primero)",
+        "steps": [
+          "Recíproco: 4/15 -> 15/4",
+          "Multiplica: 8/9 * 15/4 = 120/36",
+          "Simplifica: 120/36 = 10/3"
+        ]
+      }
+    ],
+    "solutionsFr": [
+      {
+        "title": "Solution A (en croix)",
+        "steps": [
+          "Inverse : 4/15 -> 15/4",
+          "Réduction en croix : 8 avec 4 -> 2 et 1",
+          "Réduction en croix : 15 avec 9 -> 5 et 3",
+          "Multiplie : (2*5)/(3*1)=10/3"
+        ]
+      },
+      {
+        "title": "Solution B (multiplier d'abord)",
+        "steps": [
+          "Inverse : 4/15 -> 15/4",
+          "Multiplie : 8/9 * 15/4 = 120/36",
+          "Simplifie : 120/36 = 10/3"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T_DIV_003",
+    "moduleId": "M_DIV",
+    "subskillId": "S_DIV_03",
+    "type": "mc",
+    "prompt": "Wie oft passt 1/6 in 2/3? (Rechnung: 2/3 : 1/6)",
+    "answer": {
+      "num": 4,
+      "den": 1
+    },
+    "distractors": [
+      {
+        "num": 1,
+        "den": 4
+      },
+      {
+        "num": 1,
+        "den": 3
+      },
+      {
+        "num": 2,
+        "den": 9
+      }
+    ],
+    "steps": [
+      "2/3 : 1/6 = 2/3 * 6/1",
+      "Kürzen: 6 mit 3 -> 2 und 1",
+      "= 2*2 = 4"
+    ],
+    "solutions": [
+      {
+        "title": "Lösung A (Kehrwert)",
+        "steps": [
+          "2/3 : 1/6 = 2/3 * 6/1",
+          "Kürzen: 6 mit 3 -> 2 und 1",
+          "= 2*2 = 4"
+        ]
+      },
+      {
+        "title": "Lösung B (Bedeutung)",
+        "steps": [
+          "1/6 passt 6-mal in 1",
+          "In 2/3 passt es (2/3) * 6 = 4-mal"
+        ]
+      }
+    ],
+    "tags": [
+      "divide",
+      "interpretation",
+      "simplify"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "2/3",
+      "b": "1/6"
+    },
+    "promptEn": "How many times does 1/6 fit into 2/3? (Calculation: 2/3 ÷ 1/6)",
+    "stepsEn": [
+      "2/3 ÷ 1/6 = 2/3 * 6/1",
+      "Simplify: 6 with 3 -> 2 and 1",
+      "= 2*2 = 4"
+    ],
+    "solutionsEn": [
+      {
+        "title": "Solution A (reciprocal)",
+        "steps": [
+          "2/3 ÷ 1/6 = 2/3 * 6/1",
+          "Simplify: 6 with 3 -> 2 and 1",
+          "= 2*2 = 4"
+        ]
+      },
+      {
+        "title": "Solution B (meaning)",
+        "steps": [
+          "1/6 fits 6 times into 1",
+          "Into 2/3 it fits (2/3) * 6 = 4 times"
+        ]
+      }
+    ],
+    "promptEs": "¿Cuántas veces cabe 1/6 en 2/3? (Cálculo: 2/3 ÷ 1/6)",
+    "promptFr": "Combien de fois 1/6 rentre-t-il dans 2/3 ? (Calcul : 2/3 ÷ 1/6)",
+    "stepsEs": [
+      "2/3 ÷ 1/6 = 2/3 * 6/1",
+      "Simplifica: 6 con 3 -> 2 y 1",
+      "= 2*2 = 4"
+    ],
+    "stepsFr": [
+      "2/3 ÷ 1/6 = 2/3 * 6/1",
+      "Simplifie : 6 avec 3 -> 2 et 1",
+      "= 2*2 = 4"
+    ],
+    "solutionsEs": [
+      {
+        "title": "Solución A (recíproco)",
+        "steps": [
+          "2/3 ÷ 1/6 = 2/3 * 6/1",
+          "Simplifica: 6 con 3 -> 2 y 1",
+          "= 2*2 = 4"
+        ]
+      },
+      {
+        "title": "Solución B (significado)",
+        "steps": [
+          "1/6 cabe 6 veces en 1",
+          "En 2/3 cabe (2/3) * 6 = 4 veces"
+        ]
+      }
+    ],
+    "solutionsFr": [
+      {
+        "title": "Solution A (inverse)",
+        "steps": [
+          "2/3 ÷ 1/6 = 2/3 * 6/1",
+          "Simplifie : 6 avec 3 -> 2 et 1",
+          "= 2*2 = 4"
+        ]
+      },
+      {
+        "title": "Solution B (sens)",
+        "steps": [
+          "1/6 rentre 6 fois dans 1",
+          "Dans 2/3, cela fait (2/3) * 6 = 4 fois"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "T_SIM_001",
+    "moduleId": "M_SIMPLIFY",
+    "subskillId": "S_SIM_01",
+    "type": "free",
+    "prompt": "Kürze vollständig: 18/24",
+    "answer": {
+      "num": 3,
+      "den": 4
+    },
+    "steps": [
+      "Gemeinsamer Teiler 6",
+      "18/24 = 3/4"
+    ],
+    "tags": [
+      "simplify"
+    ],
+    "expr": {
+      "op": "simplify",
+      "a": "18/24"
+    },
+    "promptEn": "Fully simplify: 18/24",
+    "stepsEn": [
+      "Common divisor 6",
+      "18/24 = 3/4"
+    ],
+    "promptEs": "Simplifica completamente: 18/24",
+    "promptFr": "Simplifie complètement : 18/24",
+    "stepsEs": [
+      "Divisor común 6",
+      "18/24 = 3/4"
+    ],
+    "stepsFr": [
+      "Diviseur commun 6",
+      "18/24 = 3/4"
+    ]
+  },
+  {
+    "id": "T_SIM_002",
+    "moduleId": "M_SIMPLIFY",
+    "subskillId": "S_SIM_02",
+    "type": "free",
+    "prompt": "Berechne mit Über-Kreuz-Kürzen: 9/14 * 7/12",
+    "answer": {
+      "num": 3,
+      "den": 8
+    },
+    "steps": [
+      "Kürzen: 7 mit 14 -> 1 und 2",
+      "Kürzen: 9 mit 12 -> 3 und 4",
+      "= (3*1)/(2*4)=3/8"
+    ],
+    "tags": [
+      "cross-simplify",
+      "multiply"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "9/14",
+      "b": "7/12"
+    },
+    "promptEn": "Calculate with cross-cancelling: 9/14 * 7/12",
+    "stepsEn": [
+      "Cancel: 7 with 14 -> 1 and 2",
+      "Cancel: 9 with 12 -> 3 and 4",
+      "= (3*1)/(2*4)=3/8"
+    ],
+    "promptEs": "Calcula con simplificación en cruz: 9/14 * 7/12",
+    "promptFr": "Calcule avec réduction en croix : 9/14 * 7/12",
+    "stepsEs": [
+      "Simplifica: 7 con 14 -> 1 y 2",
+      "Simplifica: 9 con 12 -> 3 y 4",
+      "= (3*1)/(2*4)=3/8"
+    ],
+    "stepsFr": [
+      "Réduis : 7 avec 14 -> 1 et 2",
+      "Réduis : 9 avec 12 -> 3 et 4",
+      "= (3*1)/(2*4)=3/8"
+    ]
+  },
+  {
+    "id": "T_SIM_003",
+    "moduleId": "M_SIMPLIFY",
+    "subskillId": "S_SIM_03",
+    "type": "free",
+    "prompt": "Berechne mit Kürzen: 5/6 : 10/9",
+    "answer": {
+      "num": 3,
+      "den": 4
+    },
+    "steps": [
+      "Kehrwert: 10/9 -> 9/10",
+      "Über Kreuz kürzen: 5 mit 10 -> 1 und 2",
+      "Über Kreuz kürzen: 9 mit 6 -> 3 und 2",
+      "= (1*3)/(2*2)=3/4"
+    ],
+    "tags": [
+      "divide",
+      "invert",
+      "cross-simplify"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "5/6",
+      "b": "10/9"
+    },
+    "promptEn": "Calculate with simplifying: 5/6 ÷ 10/9",
+    "stepsEn": [
+      "Reciprocal: 10/9 -> 9/10",
+      "Cross-cancel: 5 with 10 -> 1 and 2",
+      "Cross-cancel: 9 with 6 -> 3 and 2",
+      "= (1*3)/(2*2)=3/4"
+    ],
+    "promptEs": "Calcula con simplificación: 5/6 ÷ 10/9",
+    "promptFr": "Calcule avec simplification : 5/6 ÷ 10/9",
+    "stepsEs": [
+      "Recíproco: 10/9 -> 9/10",
+      "Simplifica en cruz: 5 con 10 -> 1 y 2",
+      "Simplifica en cruz: 9 con 6 -> 3 y 2",
+      "= (1*3)/(2*2)=3/4"
+    ],
+    "stepsFr": [
+      "Inverse : 10/9 -> 9/10",
+      "Réduction en croix : 5 avec 10 -> 1 et 2",
+      "Réduction en croix : 9 avec 6 -> 3 et 2",
+      "= (1*3)/(2*2)=3/4"
+    ]
+  },
+  {
+    "id": "T_MIX_001",
+    "moduleId": "M_MIXED",
+    "subskillId": "S_MIX_01",
+    "type": "mc",
+    "prompt": "Wandle um: 2 3/5 als unechter Bruch",
+    "answer": {
+      "num": 13,
+      "den": 5
+    },
+    "distractors": [
+      {
+        "num": 11,
+        "den": 5
+      },
+      {
+        "num": 2,
+        "den": 1
+      },
+      {
+        "num": 1,
+        "den": 4
+      }
+    ],
+    "steps": [
+      "2 = 10/5",
+      "10/5 + 3/5 = 13/5"
+    ],
+    "tags": [
+      "mixed-to-improper"
+    ],
+    "expr": {
+      "op": "mixedToImproper",
+      "a": "2 3/5"
+    },
+    "promptEn": "Convert: 2 3/5 to an improper fraction",
+    "stepsEn": [
+      "2 = 10/5",
+      "10/5 + 3/5 = 13/5"
+    ],
+    "promptEs": "Convierte: 2 3/5 en fracción impropia",
+    "promptFr": "Convertis : 2 3/5 en fraction impropre",
+    "stepsEs": [
+      "2 = 10/5",
+      "10/5 + 3/5 = 13/5"
+    ],
+    "stepsFr": [
+      "2 = 10/5",
+      "10/5 + 3/5 = 13/5"
+    ]
+  },
+  {
+    "id": "T_MIX_002",
+    "moduleId": "M_MIXED",
+    "subskillId": "S_MIX_02",
+    "type": "free",
+    "prompt": "Berechne: 1 1/2 * 2/3",
+    "answer": {
+      "num": 1,
+      "den": 1
+    },
+    "steps": [
+      "1 1/2 = 3/2",
+      "3/2 * 2/3",
+      "Kürzen: 3 mit 3 -> 1 und 1, 2 mit 2 -> 1 und 1",
+      "= 1"
+    ],
+    "tags": [
+      "mixed",
+      "multiply",
+      "cross-simplify"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "1 1/2",
+      "b": "2/3"
+    },
+    "promptEn": "Calculate: 1 1/2 * 2/3",
+    "stepsEn": [
+      "1 1/2 = 3/2",
+      "3/2 * 2/3",
+      "Simplify: 3 with 3 -> 1 and 1, 2 with 2 -> 1 and 1",
+      "= 1"
+    ],
+    "promptEs": "Calcula: 1 1/2 * 2/3",
+    "promptFr": "Calcule : 1 1/2 * 2/3",
+    "stepsEs": [
+      "1 1/2 = 3/2",
+      "3/2 * 2/3",
+      "Simplifica: 3 con 3 -> 1 y 1, 2 con 2 -> 1 y 1",
+      "= 1"
+    ],
+    "stepsFr": [
+      "1 1/2 = 3/2",
+      "3/2 * 2/3",
+      "Simplifie : 3 avec 3 -> 1 et 1, 2 avec 2 -> 1 et 1",
+      "= 1"
+    ]
+  },
+  {
+    "id": "T_MIX_003",
+    "moduleId": "M_MIXED",
+    "subskillId": "S_MIX_03",
+    "type": "free",
+    "prompt": "Berechne: 3 1/4 : 1/2",
+    "answer": {
+      "num": 13,
+      "den": 2
+    },
+    "steps": [
+      "3 1/4 = 13/4",
+      ": 1/2 = * 2/1",
+      "13/4 * 2/1 = 26/4 = 13/2"
+    ],
+    "tags": [
+      "mixed",
+      "divide",
+      "invert",
+      "simplify"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "3 1/4",
+      "b": "1/2"
+    },
+    "promptEn": "Calculate: 3 1/4 ÷ 1/2",
+    "stepsEn": [
+      "3 1/4 = 13/4",
+      "÷ 1/2 = * 2/1",
+      "13/4 * 2/1 = 26/4 = 13/2"
+    ],
+    "promptEs": "Calcula: 3 1/4 ÷ 1/2",
+    "promptFr": "Calcule : 3 1/4 ÷ 1/2",
+    "stepsEs": [
+      "3 1/4 = 13/4",
+      "÷ 1/2 = * 2/1",
+      "13/4 * 2/1 = 26/4 = 13/2"
+    ],
+    "stepsFr": [
+      "3 1/4 = 13/4",
+      "÷ 1/2 = * 2/1",
+      "13/4 * 2/1 = 26/4 = 13/2"
+    ]
+  },
+  {
+    "id": "T_SPC_001",
+    "moduleId": "M_SPECIAL",
+    "subskillId": "S_SPC_01",
+    "type": "mc",
+    "prompt": "Berechne: 7/9 * 1",
+    "answer": {
+      "num": 7,
+      "den": 9
+    },
+    "distractors": [
+      {
+        "num": 7,
+        "den": 10
+      },
+      {
+        "num": 9,
+        "den": 7
+      },
+      {
+        "num": 1,
+        "den": 9
+      }
+    ],
+    "steps": [
+      "Mit 1 multiplizieren verändert nicht."
+    ],
+    "tags": [
+      "identity"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "7/9",
+      "b": "1"
+    },
+    "promptEn": "Calculate: 7/9 * 1",
+    "stepsEn": [
+      "Multiplying by 1 does not change the value."
+    ],
+    "promptEs": "Calcula: 7/9 * 1",
+    "promptFr": "Calcule : 7/9 * 1",
+    "stepsEs": [
+      "Multiplicar por 1 no cambia el valor."
+    ],
+    "stepsFr": [
+      "Multiplier par 1 ne change pas la valeur."
+    ]
+  },
+  {
+    "id": "T_SPC_002",
+    "moduleId": "M_SPECIAL",
+    "subskillId": "S_SPC_02",
+    "type": "free",
+    "prompt": "Berechne: 5/6 * 3",
+    "answer": {
+      "num": 5,
+      "den": 2
+    },
+    "steps": [
+      "3 = 3/1",
+      "5/6 * 3/1 = 15/6 = 5/2"
+    ],
+    "tags": [
+      "multiply",
+      "integer-as-fraction",
+      "simplify"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "5/6",
+      "b": "3"
+    },
+    "promptEn": "Calculate: 5/6 * 3",
+    "stepsEn": [
+      "3 = 3/1",
+      "5/6 * 3/1 = 15/6 = 5/2"
+    ],
+    "promptEs": "Calcula: 5/6 * 3",
+    "promptFr": "Calcule : 5/6 * 3",
+    "stepsEs": [
+      "3 = 3/1",
+      "5/6 * 3/1 = 15/6 = 5/2"
+    ],
+    "stepsFr": [
+      "3 = 3/1",
+      "5/6 * 3/1 = 15/6 = 5/2"
+    ]
+  },
+  {
+    "id": "T_SPC_003",
+    "moduleId": "M_SPECIAL",
+    "subskillId": "S_SPC_03",
+    "type": "free",
+    "prompt": "Berechne: 4/7 : 4/7",
+    "answer": {
+      "num": 1,
+      "den": 1
+    },
+    "steps": [
+      "Durch sich selbst teilen ergibt 1 (wenn nicht 0).",
+      "4/7 : 4/7 = 4/7 * 7/4 = 1"
+    ],
+    "tags": [
+      "special-result",
+      "divide",
+      "invert"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "4/7",
+      "b": "4/7"
+    },
+    "promptEn": "Calculate: 4/7 ÷ 4/7",
+    "stepsEn": [
+      "Dividing by itself gives 1 (if not 0).",
+      "4/7 ÷ 4/7 = 4/7 * 7/4 = 1"
+    ],
+    "promptEs": "Calcula: 4/7 ÷ 4/7",
+    "promptFr": "Calcule : 4/7 ÷ 4/7",
+    "stepsEs": [
+      "Dividir por sí mismo da 1 (si no es 0).",
+      "4/7 ÷ 4/7 = 4/7 * 7/4 = 1"
+    ],
+    "stepsFr": [
+      "Diviser par soi-même donne 1 (si ce n'est pas 0).",
+      "4/7 ÷ 4/7 = 4/7 * 7/4 = 1"
+    ]
+  },
+  {
+    "id": "T_MIS_001",
+    "moduleId": "M_MISSING",
+    "subskillId": "S_MIS_01",
+    "type": "free",
+    "prompt": "Zahl gesucht: □ * 2/3 = 5/6",
+    "answer": {
+      "num": 5,
+      "den": 4
+    },
+    "steps": [
+      "□ = 5/6 : 2/3",
+      "= 5/6 * 3/2 = 15/12 = 5/4"
+    ],
+    "tags": [
+      "missing",
+      "divide",
+      "invert",
+      "simplify"
+    ],
+    "expr": {
+      "op": "missingFactor",
+      "factor": "2/3",
+      "result": "5/6"
+    },
+    "promptEn": "Missing number: □ * 2/3 = 5/6",
+    "stepsEn": [
+      "□ = 5/6 ÷ 2/3",
+      "= 5/6 * 3/2 = 15/12 = 5/4"
+    ],
+    "promptEs": "Número desconocido: □ * 2/3 = 5/6",
+    "promptFr": "Nombre manquant : □ * 2/3 = 5/6",
+    "stepsEs": [
+      "□ = 5/6 ÷ 2/3",
+      "= 5/6 * 3/2 = 15/12 = 5/4"
+    ],
+    "stepsFr": [
+      "□ = 5/6 ÷ 2/3",
+      "= 5/6 * 3/2 = 15/12 = 5/4"
+    ]
+  },
+  {
+    "id": "T_MIS_002",
+    "moduleId": "M_MISSING",
+    "subskillId": "S_MIS_02",
+    "type": "free",
+    "prompt": "Zahl gesucht: 3/5 : □ = 9/10",
+    "answer": {
+      "num": 2,
+      "den": 3
+    },
+    "steps": [
+      "3/5 : □ = 9/10 => 3/5 = 9/10 * □",
+      "□ = 3/5 : 9/10",
+      "= 3/5 * 10/9 = 30/45 = 2/3"
+    ],
+    "tags": [
+      "missing",
+      "rearrange",
+      "divide",
+      "invert",
+      "simplify"
+    ],
+    "expr": {
+      "op": "missingDivisor",
+      "dividend": "3/5",
+      "result": "9/10"
+    },
+    "promptEn": "Missing number: 3/5 ÷ □ = 9/10",
+    "stepsEn": [
+      "3/5 ÷ □ = 9/10 => 3/5 = 9/10 * □",
+      "□ = 3/5 ÷ 9/10",
+      "= 3/5 * 10/9 = 30/45 = 2/3"
+    ],
+    "promptEs": "Número desconocido: 3/5 ÷ □ = 9/10",
+    "promptFr": "Nombre manquant : 3/5 ÷ □ = 9/10",
+    "stepsEs": [
+      "3/5 ÷ □ = 9/10 => 3/5 = 9/10 * □",
+      "□ = 3/5 ÷ 9/10",
+      "= 3/5 * 10/9 = 30/45 = 2/3"
+    ],
+    "stepsFr": [
+      "3/5 ÷ □ = 9/10 => 3/5 = 9/10 * □",
+      "□ = 3/5 ÷ 9/10",
+      "= 3/5 * 10/9 = 30/45 = 2/3"
+    ]
+  },
+  {
+    "id": "T_MIS_003",
+    "moduleId": "M_MISSING",
+    "subskillId": "S_MIS_03",
+    "type": "free",
+    "prompt": "Zahl gesucht: □ : 2/3 = 5/6",
+    "answer": {
+      "num": 5,
+      "den": 9
+    },
+    "steps": [
+      "□ = 5/6 * 2/3",
+      "□ = 10/18 = 5/9"
+    ],
+    "tags": [
+      "missing",
+      "multiply",
+      "simplify"
+    ],
+    "expr": {
+      "op": "missingDividend",
+      "divisor": "2/3",
+      "result": "5/6"
+    },
+    "promptEn": "Missing number: □ ÷ 2/3 = 5/6",
+    "stepsEn": [
+      "□ = 5/6 * 2/3",
+      "□ = 10/18 = 5/9"
+    ],
+    "promptEs": "Número desconocido: □ ÷ 2/3 = 5/6",
+    "promptFr": "Nombre manquant : □ ÷ 2/3 = 5/6",
+    "stepsEs": [
+      "□ = 5/6 * 2/3",
+      "□ = 10/18 = 5/9"
+    ],
+    "stepsFr": [
+      "□ = 5/6 * 2/3",
+      "□ = 10/18 = 5/9"
+    ]
+  },
+  {
+    "id": "T_APP_001",
+    "moduleId": "M_APPLY",
+    "subskillId": "S_APP_01",
+    "type": "free",
+    "prompt": "Berechne: 3/4 von 2 Stunden (Ergebnis als Bruchteil einer Stunde)",
+    "answer": {
+      "num": 3,
+      "den": 2
+    },
+    "steps": [
+      "3/4 von 2 = 3/4 * 2/1 = 6/4 = 3/2"
+    ],
+    "tags": [
+      "word",
+      "multiply",
+      "units",
+      "simplify"
+    ],
+    "expr": {
+      "op": "mul",
+      "a": "3/4",
+      "b": "2"
+    },
+    "promptEn": "Calculate: 3/4 of 2 hours (answer as a fraction of an hour)",
+    "stepsEn": [
+      "3/4 of 2 = 3/4 * 2/1 = 6/4 = 3/2"
+    ],
+    "promptEs": "Calcula: 3/4 de 2 horas (respuesta como fracción de hora)",
+    "promptFr": "Calcule : 3/4 de 2 heures (réponse en fraction d'heure)",
+    "stepsEs": [
+      "3/4 de 2 = 3/4 * 2/1 = 6/4 = 3/2"
+    ],
+    "stepsFr": [
+      "3/4 de 2 = 3/4 * 2/1 = 6/4 = 3/2"
+    ]
+  },
+  {
+    "id": "T_APP_002",
+    "moduleId": "M_APPLY",
+    "subskillId": "S_APP_02",
+    "type": "free",
+    "prompt": "Eine Strecke ist 2/3 km lang. Ein Abschnitt ist 1/6 km. Wie viele solche Abschnitte passen hinein?",
+    "answer": {
+      "num": 4,
+      "den": 1
+    },
+    "steps": [
+      "2/3 : 1/6 = 2/3 * 6 = 4"
+    ],
+    "tags": [
+      "word",
+      "divide",
+      "interpretation"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "2/3",
+      "b": "1/6"
+    },
+    "promptEn": "A distance is 2/3 km. One section is 1/6 km. How many such sections fit?",
+    "stepsEn": [
+      "2/3 ÷ 1/6 = 2/3 * 6 = 4"
+    ],
+    "promptEs": "Una distancia es 2/3 km. Un tramo es 1/6 km. ¿Cuántos tramos caben?",
+    "promptFr": "Une distance fait 2/3 km. Un tronçon fait 1/6 km. Combien de tronçons rentrent ?",
+    "stepsEs": [
+      "2/3 ÷ 1/6 = 2/3 * 6 = 4"
+    ],
+    "stepsFr": [
+      "2/3 ÷ 1/6 = 2/3 * 6 = 4"
+    ]
+  },
+  {
+    "id": "T_APP_003",
+    "moduleId": "M_APPLY",
+    "subskillId": "S_APP_03",
+    "type": "free",
+    "prompt": "Du hast 1 1/2 Liter Saft. Du füllst ihn in Flaschen zu je 3/4 Liter. Wie viele Flaschen kannst du füllen?",
+    "answer": {
+      "num": 2,
+      "den": 1
+    },
+    "steps": [
+      "1 1/2 = 3/2",
+      "3/2 : 3/4 = 3/2 * 4/3",
+      "Kürzen: 3 mit 3 -> 1 und 1",
+      "= 4/2 = 2"
+    ],
+    "tags": [
+      "word",
+      "mixed",
+      "divide",
+      "invert",
+      "cross-simplify"
+    ],
+    "expr": {
+      "op": "div",
+      "a": "1 1/2",
+      "b": "3/4"
+    },
+    "promptEn": "You have 1 1/2 litres of juice. You fill bottles of 3/4 litre each. How many bottles can you fill?",
+    "stepsEn": [
+      "1 1/2 = 3/2",
+      "3/2 ÷ 3/4 = 3/2 * 4/3",
+      "Simplify: 3 with 3 -> 1 and 1",
+      "= 4/2 = 2"
+    ],
+    "promptEs": "Tienes 1 1/2 litros de zumo. Llenas botellas de 3/4 de litro. ¿Cuántas puedes llenar?",
+    "promptFr": "Tu as 1 1/2 litre de jus. Tu remplis des bouteilles de 3/4 litre. Combien peux-tu en remplir ?",
+    "stepsEs": [
+      "1 1/2 = 3/2",
+      "3/2 ÷ 3/4 = 3/2 * 4/3",
+      "Simplifica: 3 con 3 -> 1 y 1",
+      "= 4/2 = 2"
+    ],
+    "stepsFr": [
+      "1 1/2 = 3/2",
+      "3/2 ÷ 3/4 = 3/2 * 4/3",
+      "Simplifie : 3 avec 3 -> 1 et 1",
+      "= 4/2 = 2"
+    ]
+  }
+]
