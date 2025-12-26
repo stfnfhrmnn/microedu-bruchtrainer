@@ -15,9 +15,12 @@ import type { Attempt, ModuleStatus, TaskInstance, TaskTemplate } from "./logic/
 import { modules, subskillById, subskills } from "./logic/modules";
 import { evaluateModuleStatus, isSubskillMastered } from "./logic/progress";
 import { buildSubskillStats, pickTrainingSubskill } from "./logic/selection";
-import { getDiagnosisTasksForModule, getTrainingTask } from "./logic/session";
+import { getDiagnosisTasksForModule, getTrainingTask, toInstance } from "./logic/session";
 import { loadAttempts, saveAttempts } from "./logic/storage";
 import { taskLookupById } from "./logic/tasks";
+
+const DIAGNOSIS_QUEUE_KEY = "bruchtrainer.diagnosisQueue";
+const DIAGNOSIS_INDEX_KEY = "bruchtrainer.diagnosisIndex";
 
 const buildDiagnosisQueue = (): TaskInstance[] => {
   const tasks: TaskInstance[] = [];
@@ -25,6 +28,71 @@ const buildDiagnosisQueue = (): TaskInstance[] => {
     tasks.push(...getDiagnosisTasksForModule(moduleItem.id, 5));
   }
   return tasks;
+};
+
+const loadDiagnosisQueueFromStorage = (): TaskInstance[] => {
+  if (typeof window === "undefined") {
+    return [];
+  }
+  const raw = window.localStorage.getItem(DIAGNOSIS_QUEUE_KEY);
+  if (!raw) {
+    return [];
+  }
+  try {
+    const ids = JSON.parse(raw);
+    if (!Array.isArray(ids)) {
+      return [];
+    }
+    const queue = ids
+      .map((id) => (typeof id === "string" ? taskLookupById(id) : undefined))
+      .filter((task): task is TaskTemplate => Boolean(task))
+      .map((task) => toInstance(task));
+    if (queue.length !== ids.length) {
+      return [];
+    }
+    return queue;
+  } catch {
+    return [];
+  }
+};
+
+const loadDiagnosisIndexFromStorage = (): number => {
+  if (typeof window === "undefined") {
+    return 0;
+  }
+  const raw = window.localStorage.getItem(DIAGNOSIS_INDEX_KEY);
+  const parsed = raw ? Number.parseInt(raw, 10) : 0;
+  if (!Number.isFinite(parsed) || parsed < 0) {
+    return 0;
+  }
+  return parsed;
+};
+
+const persistDiagnosisQueue = (queue: TaskInstance[]): void => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  if (queue.length === 0) {
+    window.localStorage.removeItem(DIAGNOSIS_QUEUE_KEY);
+    return;
+  }
+  const ids = queue.map((task) => task.id);
+  window.localStorage.setItem(DIAGNOSIS_QUEUE_KEY, JSON.stringify(ids));
+};
+
+const persistDiagnosisIndex = (index: number): void => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  window.localStorage.setItem(DIAGNOSIS_INDEX_KEY, String(index));
+};
+
+const clearDiagnosisProgress = (): void => {
+  if (typeof window === "undefined") {
+    return;
+  }
+  window.localStorage.removeItem(DIAGNOSIS_QUEUE_KEY);
+  window.localStorage.removeItem(DIAGNOSIS_INDEX_KEY);
 };
 
 const loadLanguage = (): Language => {
@@ -63,8 +131,10 @@ const App: React.FC = () => {
     }
     return window.localStorage.getItem("bruchtrainer.diagnosisStarted") === "true";
   });
-  const [diagnosisQueue, setDiagnosisQueue] = useState<TaskInstance[]>([]);
-  const [diagnosisIndex, setDiagnosisIndex] = useState(0);
+  const [diagnosisQueue, setDiagnosisQueue] = useState<TaskInstance[]>(
+    () => loadDiagnosisQueueFromStorage()
+  );
+  const [diagnosisIndex, setDiagnosisIndex] = useState(() => loadDiagnosisIndexFromStorage());
   const [trainingTask, setTrainingTask] = useState<TaskInstance | null>(null);
   const [trainingRemaining, setTrainingRemaining] = useState(0);
   const [trainingCorrect, setTrainingCorrect] = useState(0);
@@ -103,6 +173,21 @@ const App: React.FC = () => {
     if (typeof window !== "undefined") {
       window.localStorage.setItem("bruchtrainer.diagnosisStarted", "true");
     }
+    const storedQueue = loadDiagnosisQueueFromStorage();
+    const storedIndex = loadDiagnosisIndexFromStorage();
+    const canResume =
+      !diagnosisComplete && storedQueue.length > 0 && storedIndex < storedQueue.length;
+    if (canResume) {
+      taskRegistry.current.clear();
+      storedQueue.forEach(registerTask);
+      setDiagnosisQueue(storedQueue);
+      setDiagnosisIndex(storedIndex);
+      setCurrentAnswer("");
+      setFeedback(null);
+      setAwaitingConfidence(false);
+      taskStartRef.current = Date.now();
+      return;
+    }
     setDiagnosisComplete(false);
     if (typeof window !== "undefined") {
       window.localStorage.setItem("bruchtrainer.diagnosisComplete", "false");
@@ -113,6 +198,8 @@ const App: React.FC = () => {
     ensuredQueue.forEach(registerTask);
     setDiagnosisQueue(ensuredQueue);
     setDiagnosisIndex(0);
+    persistDiagnosisQueue(ensuredQueue);
+    persistDiagnosisIndex(0);
     setCurrentAnswer("");
     setFeedback(null);
     setAwaitingConfidence(false);
@@ -376,9 +463,11 @@ const App: React.FC = () => {
           window.localStorage.setItem("bruchtrainer.diagnosisComplete", "true");
           window.localStorage.setItem("bruchtrainer.diagnosisStarted", "true");
         }
+        clearDiagnosisProgress();
         setView("dashboard");
       } else {
         setDiagnosisIndex(nextIndex);
+        persistDiagnosisIndex(nextIndex);
       }
       return;
     }
@@ -412,6 +501,11 @@ const App: React.FC = () => {
       lookupTask(taskId)
     ),
   }));
+  const diagnosisTotal = diagnosisQueue.length;
+  const diagnosisDone = Math.min(diagnosisIndex, diagnosisTotal);
+  const showDiagnosisProgress =
+    diagnosisStarted && !diagnosisComplete && diagnosisTotal > 0;
+  const diagnosisCta = showDiagnosisProgress ? t.diagnosisResumeCta : t.diagnosisNudgeCta;
 
   return (
     <div className="app-shell">
@@ -546,8 +640,13 @@ const App: React.FC = () => {
               <div className={`action-block ${diagnosisComplete ? "" : "attention"}`}>
                 <h2>{t.diagnosisNudgeTitle}</h2>
                 <p>{t.diagnosisNudgeBody}</p>
+                {showDiagnosisProgress ? (
+                  <p className="action-progress">
+                    {t.diagnosisProgress(diagnosisDone, diagnosisTotal)}
+                  </p>
+                ) : null}
                 <button type="button" className="secondary" onClick={startDiagnosis}>
-                  {t.diagnosisNudgeCta}
+                  {diagnosisCta}
                 </button>
               </div>
             </section>

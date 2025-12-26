@@ -33,6 +33,8 @@ type Strings = {
   diagnosisNudgeTitle: string;
   diagnosisNudgeBody: string;
   diagnosisNudgeCta: string;
+  diagnosisResumeCta: string;
+  diagnosisProgress: (done: number, total: number) => string;
   trainingTaskTitle: string;
   answerPlaceholder: string;
   checkLabel: string;
@@ -103,6 +105,8 @@ export const strings: Record<Language, Strings> = {
     diagnosisNudgeBody:
       "Hilf uns, deinen aktuellen Stand zu sehen. Der Kurz-Check dauert nur wenige Minuten.",
     diagnosisNudgeCta: "Kurz-Check starten",
+    diagnosisResumeCta: "Kurz-Check fortsetzen",
+    diagnosisProgress: (done, total) => `Fortschritt: ${done} von ${total} Aufgaben`,
     trainingTaskTitle: "Training",
     answerPlaceholder: "Antwort (z.B. 3/4 oder 1 1/2)",
     checkLabel: "Prüfen",
@@ -173,6 +177,8 @@ export const strings: Record<Language, Strings> = {
     diagnosisNudgeBody:
       "Help us see your current level. The quick check takes just a few minutes.",
     diagnosisNudgeCta: "Start quick check",
+    diagnosisResumeCta: "Continue quick check",
+    diagnosisProgress: (done, total) => `Progress: ${done} of ${total} tasks`,
     trainingTaskTitle: "Practice",
     answerPlaceholder: "Answer (e.g. 3/4 or 1 1/2)",
     checkLabel: "Check",
@@ -243,6 +249,8 @@ export const strings: Record<Language, Strings> = {
     diagnosisNudgeBody:
       "Ayúdanos a ver tu nivel actual. El chequeo rápido tarda solo unos minutos.",
     diagnosisNudgeCta: "Iniciar chequeo",
+    diagnosisResumeCta: "Continuar chequeo",
+    diagnosisProgress: (done, total) => `Progreso: ${done} de ${total} tareas`,
     trainingTaskTitle: "Práctica",
     answerPlaceholder: "Respuesta (p. ej. 3/4 o 1 1/2)",
     checkLabel: "Comprobar",
@@ -313,6 +321,8 @@ export const strings: Record<Language, Strings> = {
     diagnosisNudgeBody:
       "Aide-nous à voir ton niveau actuel. La vérification rapide ne prend que quelques minutes.",
     diagnosisNudgeCta: "Démarrer la vérification",
+    diagnosisResumeCta: "Continuer la vérification",
+    diagnosisProgress: (done, total) => `Progression : ${done} sur ${total} exercices`,
     trainingTaskTitle: "Entraînement",
     answerPlaceholder: "Réponse (ex. 3/4 ou 1 1/2)",
     checkLabel: "Vérifier",

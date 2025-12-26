@@ -174,6 +174,12 @@ body {
   gap: 8px;
 }
 
+.action-progress {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
 .action-block.attention {
   border-color: #d45f2a;
   box-shadow: 0 0 0 2px rgba(212, 95, 42, 0.2);
