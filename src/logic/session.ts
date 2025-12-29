@@ -29,10 +29,14 @@ export const getDiagnosisTasksForModule = (
   return shuffled.slice(0, Math.min(count, pool.length)).map(toInstance);
 };
 
-export const getTrainingTask = (subskillId: string): TaskInstance => {
+export const getTrainingTask = (subskillId: string, excludeTaskId?: string): TaskInstance => {
   const pool = tasks.filter((task) => task.subskillId === subskillId);
   if (pool.length > 0) {
-    const choice = pool[Math.floor(Math.random() * pool.length)];
+    const candidates =
+      excludeTaskId && pool.length > 1
+        ? pool.filter((task) => task.id !== excludeTaskId)
+        : pool;
+    const choice = candidates[Math.floor(Math.random() * candidates.length)];
     return toInstance(choice);
   }
   return generateTask(subskillId);

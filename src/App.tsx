@@ -489,7 +489,8 @@ const App: React.FC = () => {
       const nextSubskill = pickTrainingSubskill(nextAttempts, scopedSubskills, (taskId) =>
         lookupTask(taskId)
       );
-      const nextTask = getTrainingTask(nextSubskill) ?? generateTask(nextSubskill);
+      const nextTask =
+        getTrainingTask(nextSubskill, currentTask?.id) ?? generateTask(nextSubskill);
       registerTask(nextTask);
       setTrainingTask(nextTask);
     }

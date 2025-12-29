@@ -39,6 +39,13 @@ const TaskCard: React.FC<TaskCardProps> = ({
       <div className="task-input">
         <input
           type="text"
+          inputMode="numeric"
+          pattern="[0-9\\s/+-]*"
+          enterKeyHint="done"
+          autoComplete="off"
+          autoCorrect="off"
+          autoCapitalize="off"
+          spellCheck={false}
           placeholder={placeholder}
           value={inputValue}
           onChange={(event) => onInputChange(event.target.value)}
