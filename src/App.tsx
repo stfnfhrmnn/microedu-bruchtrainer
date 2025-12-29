@@ -9,7 +9,7 @@ import TaskCard from "./components/TaskCard";
 import VisualCanvas from "./components/VisualCanvas";
 import { formatFraction } from "./engine/fractions";
 import { evaluateAnswer } from "./logic/evaluate";
-import { generateTask } from "./logic/generators";
+import { canGenerateTask, generateTask } from "./logic/generators";
 import { glossary, strings, type Language, getLanguageLabel, languageOrder } from "./logic/i18n";
 import type { Attempt, ModuleStatus, TaskInstance, TaskTemplate } from "./logic/models";
 import { modules, subskillById, subskills } from "./logic/modules";
@@ -17,10 +17,23 @@ import { evaluateModuleStatus, isSubskillMastered } from "./logic/progress";
 import { buildSubskillStats, pickTrainingSubskill } from "./logic/selection";
 import { getDiagnosisTasksForModule, getTrainingTask, toInstance } from "./logic/session";
 import { loadAttempts, saveAttempts } from "./logic/storage";
-import { taskLookupById } from "./logic/tasks";
+import { getSeedTaskCount, taskLookupById } from "./logic/tasks";
 
 const DIAGNOSIS_QUEUE_KEY = "bruchtrainer.diagnosisQueue";
 const DIAGNOSIS_INDEX_KEY = "bruchtrainer.diagnosisIndex";
+
+const TRAINING_RECENT_LIMIT = 4;
+const TRAINING_GENERATOR_SHARE = 0.5;
+
+const taskSignature = (task: TaskInstance): string => {
+  const answer = `${task.answer.num}/${task.answer.den}`;
+  const visual = task.visual
+    ? `${task.visual.type}:${task.visual.rows ?? ""}:${task.visual.cols ?? ""}:${
+        task.visual.sectors ?? ""
+      }:${task.visual.shaded ?? ""}:${task.visual.target ?? ""}:${task.visual.mode ?? ""}`
+    : "";
+  return [task.subskillId, task.type, task.prompt, answer, visual].join("|");
+};
 
 const buildDiagnosisQueue = (): TaskInstance[] => {
   const tasks: TaskInstance[] = [];
@@ -145,6 +158,7 @@ const App: React.FC = () => {
 
   const taskRegistry = useRef(new Map<string, TaskInstance>());
   const taskStartRef = useRef<number>(Date.now());
+  const trainingHistoryRef = useRef(new Map<string, string[]>());
   const t = strings[language];
 
   const registerTask = (task: TaskInstance): void => {
@@ -153,6 +167,68 @@ const App: React.FC = () => {
 
   const lookupTask = (taskId: string): TaskTemplate | undefined => {
     return taskRegistry.current.get(taskId) ?? taskLookupById(taskId);
+  };
+
+  const rememberTrainingTask = (task: TaskInstance): void => {
+    const signature = taskSignature(task);
+    const current = trainingHistoryRef.current.get(task.subskillId) ?? [];
+    const next = [signature, ...current.filter((entry) => entry !== signature)].slice(
+      0,
+      TRAINING_RECENT_LIMIT
+    );
+    trainingHistoryRef.current.set(task.subskillId, next);
+  };
+
+  const pickNextTrainingTask = (
+    subskillId: string,
+    previousTask?: TaskInstance
+  ): TaskInstance => {
+    const recentSignatures = trainingHistoryRef.current.get(subskillId) ?? [];
+    const previousSignature = previousTask ? taskSignature(previousTask) : null;
+    const seedCount = getSeedTaskCount(subskillId);
+    const canGenerate = canGenerateTask(subskillId);
+    const preferGenerated = canGenerate && seedCount <= 1;
+
+    const fromSeed = (): TaskInstance => getTrainingTask(subskillId, previousTask?.id);
+    const fromGenerated = (): TaskInstance => generateTask(subskillId);
+
+    const isDuplicate = (candidate: TaskInstance): boolean => {
+      const signature = taskSignature(candidate);
+      if (previousSignature && signature === previousSignature) {
+        return true;
+      }
+      return recentSignatures.includes(signature);
+    };
+
+    const maxAttempts = 6;
+    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+      const candidate = preferGenerated
+        ? fromGenerated()
+        : canGenerate && Math.random() < TRAINING_GENERATOR_SHARE
+        ? fromGenerated()
+        : fromSeed();
+      if (!isDuplicate(candidate)) {
+        return candidate;
+      }
+    }
+
+    if (canGenerate) {
+      for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+        const candidate = fromGenerated();
+        if (!isDuplicate(candidate)) {
+          return candidate;
+        }
+      }
+    }
+
+    for (let attempt = 0; attempt < maxAttempts; attempt += 1) {
+      const candidate = fromSeed();
+      if (!isDuplicate(candidate)) {
+        return candidate;
+      }
+    }
+
+    return fromSeed();
   };
 
   const moduleStatuses: ModuleStatus[] = useMemo(() => {
@@ -217,8 +293,10 @@ const App: React.FC = () => {
     const subskillId = pickTrainingSubskill(attempts, scopedSubskills, (taskId) =>
       lookupTask(taskId)
     );
-    const task = getTrainingTask(subskillId) ?? generateTask(subskillId);
+    trainingHistoryRef.current.clear();
+    const task = pickNextTrainingTask(subskillId);
     registerTask(task);
+    rememberTrainingTask(task);
     setTrainingTask(task);
     setTrainingRemaining(10);
     setTrainingCorrect(0);
@@ -489,9 +567,9 @@ const App: React.FC = () => {
       const nextSubskill = pickTrainingSubskill(nextAttempts, scopedSubskills, (taskId) =>
         lookupTask(taskId)
       );
-      const nextTask =
-        getTrainingTask(nextSubskill, currentTask?.id) ?? generateTask(nextSubskill);
+      const nextTask = pickNextTrainingTask(nextSubskill, trainingTask);
       registerTask(nextTask);
+      rememberTrainingTask(nextTask);
       setTrainingTask(nextTask);
     }
   };

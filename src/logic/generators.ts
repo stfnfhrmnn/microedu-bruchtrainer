@@ -2,6 +2,24 @@ import { formatFraction, mul, div, parseFraction, simplify } from "../engine/fra
 import { moduleIdForSubskill } from "./modules";
 import type { TaskInstance } from "./models";
 
+export const generatorSubskills = new Set([
+  "S_VIS_01",
+  "S_VIS_02",
+  "S_MUL_01",
+  "S_MUL_02",
+  "S_MUL_03",
+  "S_DIV_01",
+  "S_DIV_02",
+  "S_SIM_01",
+  "S_MIS_01",
+  "S_MIS_02",
+  "S_MIS_03",
+]);
+
+export const canGenerateTask = (subskillId: string): boolean => {
+  return generatorSubskills.has(subskillId);
+};
+
 const randInt = (min: number, max: number): number => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };

@@ -32,7 +32,15 @@ export const tasks: TaskTemplate[] = (seedTasks as unknown as any[]).map(
 );
 
 export const taskIndex = new Map(tasks.map((task) => [task.id, task]));
+const subskillTaskCounts = tasks.reduce((counts, task) => {
+  counts.set(task.subskillId, (counts.get(task.subskillId) ?? 0) + 1);
+  return counts;
+}, new Map<string, number>());
 
 export const taskLookupById = (taskId: string): TaskTemplate | undefined => {
   return taskIndex.get(taskId);
+};
+
+export const getSeedTaskCount = (subskillId: string): number => {
+  return subskillTaskCounts.get(subskillId) ?? 0;
 };
